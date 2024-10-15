@@ -1,21 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Oct 12 17:04:00 2024
-
-@author: soham
-"""
-
-
 import random
 import time
+from inputimeout import inputimeout, TimeoutOccurred
 
+sign = ["+", "-", "×", "÷"]
 
-sign = ['+','-','×','÷']
-
-
-# =============================================================================
 # queations
-# =============================================================================
 while True:
     try:
         qn = int(input("Please enter a number: "))
@@ -24,76 +13,78 @@ while True:
         print("Enter a number for count of queations")
 
 
-
-
-
-
-# =============================================================================
 # main function
-# =============================================================================
-
 def gen(n):
     s = random.choice(sign)
-    if s == '×' or s == '÷':
+    if s == "×" or s == "÷":
         x = random.randint(1, 10000)
-        y = random.randint(1,10)
-        
+        y = random.randint(1, 10)
+        ans = None
+
         if s == "÷":
             a = x // y
-            print('Q.',+n,'What is',x,s,y,'?')
-            ans = int(input('ans > '))
-            n += 1
+            print("Q.", +n, "What is", x, s, y, "?")
+            try:
+                ans = int(inputimeout(prompt="Enter the ans You have 1 minute:- ", timeout=5))#timeout value in second
+            except TimeoutOccurred:
+                print(f"Time is over, right answer is:- {a}")
+                return 
+                
+            # n += 1
             if ans == a:
-                print('very good!')
-                print('Answer is', a)
+                print("very good!")
+                print(f"Answer is:- {a}")
             else:
-                print("Answer is",a)
+                print(f"Your Answer is wrong and right ans is:- {a}")
         else:
             a = x * y
-            print('Q.',+n,'What is',x,s,y,'?')
-            ans = int(input('ans > '))
-            n += 1
+            print("Q.", +n, "What is", x, s, y, "?")
+            try:
+                ans = int(inputimeout(prompt="Enter the ans You have 1 minute:- ", timeout=5))#timeout value in second
+            except TimeoutOccurred:
+                print(f"Time is over, right answer is:- {a}")
+                return 
+            # n += 1
             if ans == a:
-                print('wall done!')
-                print('Answer is', a)
+                print("wall done!")
+                print("Answer is", a)
             else:
-                print("Answer is",a)
-            
+                print(f"Your Answer is wrong and right ans is:- {a}")
+
     else:
         x = random.randint(1, 10000)
         y = random.randint(1, 10000)
-        
+
         if s == "+":
             a = x + y
-            print('Q.',+n,'What is',x,s,y,'?')
-            ans = int(input('ans > '))
-            n += 1
+            print("Q.", +n, "What is", x, s, y, "?")
+            try:
+                ans = int(inputimeout(prompt="Enter the ans You have 1 minute:- ", timeout=5))#timeout value in second
+            except TimeoutOccurred:
+                print(f"Time is over, right answer is:- {a}")
+                return 
+            # n += 1
             if ans == a:
-                print('keep it up!!')
-                print('Answer is', a)
+                print("keep it up!!")
+                print("Answer is", a)
             else:
-                print("Answer is",a)
+                print(f"Your Answer is wrong and right ans is:- {a}")
         else:
             a = x - y
-            print('Q.',+n,'What is',x,s,y,'?')
-            ans = int(input('ans > '))
-            n += 1
+            print("Q.", +n, "What is", x, s, y, "?")
+            try:
+                ans = int(inputimeout(prompt="Enter the ans You have 1 minute:- ", timeout=5))#timeout value in second
+            except TimeoutOccurred:
+                print(f"Time is over, right answer is:- {a}")
+                return 
+            # n += 1
             if ans == a:
-                print('correct!')
-                print('Answer is', a)
+                print("correct!")
+                print("Answer is", a)
             else:
-                print("Answer is",a)
+                print(f"Your Answer is wrong and right ans is:- {a}")
 
 
-# =============================================================================
-# others stuff
-# =============================================================================
-
-for i in range(1,qn + 1,1):
+# driver code
+for i in range(1, qn + 1, 1):
     gen(i)
-    
-                
-
-
-
-    
