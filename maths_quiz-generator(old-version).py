@@ -2,7 +2,7 @@ import random
 import time
 
 sign = ['+','-','×','÷']
-#hi
+
 
 queations = int(input("how many Queations do you want ? : "))
 q = 1
