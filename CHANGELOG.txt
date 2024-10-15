@@ -1,0 +1,7 @@
+Change Log
+==========
+
+0.0.1 (15/10/2024)
+------------------
+-First release
+-bug n=n+1 remove from the code becasue it is not necessary from my prespective and I convert the code into class based.
